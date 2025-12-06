@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Preview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 { color: #333; text-align: center; }
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        button {
+            padding: 12px 30px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .btn-download {
+            background: #4CAF50;
+            color: white;
+        }
+        .btn-download:hover {
+            background: #45a049;
+        }
+        .btn-jobs {
+            background: #2196F3;
+            color: white;
+        }
+        .btn-jobs:hover {
+            background: #0b7dda;
+        }
+        .preview {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📄 Your Resume is Ready!</h1>
+        
+        <div class="preview">
+            <h2>{{ data.name }}</h2>
+            <p><strong>{{ data.title }}</strong></p>
+            <p>{{ data.email }} | {{ data.phone }}</p>
+            <p><strong>Skills:</strong> {{ data.skills }}</p>
+        </div>
+        
+        <div class="button-group">
+            <form action="/generate_pdf" method="POST" style="display:inline;">
+                {% for key, value in data.items() %}
+                <input type="hidden" name="{{ key }}" value="{{ value }}">
+                {% endfor %}
+                <button type="submit" class="btn-download">📥 Download PDF</button>
+            </form>
+            
+            <form action="/analyze_and_match" method="POST" style="display:inline;">
+                {% for key, value in data.items() %}
+                <input type="hidden" name="{{ key }}" value="{{ value }}">
+                {% endfor %}
+                <button type="submit" class="btn-jobs">💼 Find Matching Jobs</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

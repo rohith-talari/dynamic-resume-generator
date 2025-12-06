@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ name }} Resume</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width:850px; margin:0 auto; padding:40px;}
+        .header { text-align:center; border-bottom:3px solid #667eea; padding-bottom:15px; }
+        .name { font-size:28px; font-weight:bold; color:#667eea; }
+        .contact { font-size:13px; margin-top:10px;}
+        .section { margin-bottom:20px;}
+        .section-title { font-size:14px; font-weight:bold; color:#667eea; border-bottom:1px solid #dee2e6; margin-bottom:8px;}
+        .content { font-size:13px; line-height:1.8;}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="name">{{ name }}</div>
+        <div class="contact">{{ email }} | {{ phone }}</div>
+    </div>
+    {% if education %}
+    <div class="section">
+        <div class="section-title">Education</div>
+        <div class="content">{{ education }}</div>
+    </div>
+    {% endif %}
+    {% if experience %}
+    <div class="section">
+        <div class="section-title">Experience</div>
+        <div class="content">{{ experience }}</div>
+    </div>
+    {% endif %}
+    {% if skills %}
+    <div class="section">
+        <div class="section-title">Skills</div>
+        <div class="content">{{ skills }}</div>
+    </div>
+    {% endif %}
+</body>
+</html>

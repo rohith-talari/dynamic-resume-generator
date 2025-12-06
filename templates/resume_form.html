@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Generator</title>
+    <style>
+        body { font-family: Arial; background: linear-gradient(135deg,#667eea 0%,#764ba2 100%); margin:0; }
+        .container { background:white; margin:40px auto; padding:32px 24px; border-radius:10px; max-width:420px; }
+        h1 { text-align:center; color:#667eea; }
+        label { font-weight:bold; margin-top:10px; }
+        input, textarea { width:100%; padding:10px; border-radius:6px; border:1px solid #ccc; margin-bottom:12px; }
+        button { width:100%; background:#667eea; padding:12px; border-radius:6px; border:none; color:white; font-size:18px; font-weight:bold; }
+        button:hover { background:#5568d3; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Resume Generator</h1>
+    <form method="POST">
+        <label>Name</label>
+        <input type="text" name="name" required>
+        <label>Email</label>
+        <input type="email" name="email" required>
+        <label>Phone</label>
+        <input type="text" name="phone" required>
+        <label>Education</label>
+        <textarea name="education" required></textarea>
+        <label>Experience</label>
+        <textarea name="experience" required></textarea>
+        <label>Skills (comma separated)</label>
+        <input type="text" name="skills" required>
+        <button type="submit">Generate PDF</button>
+        <button type="submit" formaction="/find_jobs" formmethod="post">Find Jobs</button>
+    </form>
+</div>
+</body>
+</html>

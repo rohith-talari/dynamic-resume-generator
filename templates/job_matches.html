@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Matches</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        h1 { color: #333; }
+        .skills-section {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .skill-tag {
+            display: inline-block;
+            background: #2196F3;
+            color: white;
+            padding: 5px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        .job-card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .job-card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        .job-title {
+            font-size: 20px;
+            color: #2196F3;
+            font-weight: bold;
+        }
+        .company {
+            color: #666;
+            font-size: 16px;
+        }
+        .apply-btn {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .apply-btn:hover {
+            background: #45a049;
+        }
+        .match-score {
+            background: #ff9800;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Your Job Matches</h1>
+        
+        <div class="skills-section">
+            <h3>📊 Your Skills Profile</h3>
+            <p><strong>Experience:</strong> {{ experience }} years</p>
+            <p><strong>Skills Detected:</strong></p>
+            {% for skill in skills %}
+            <span class="skill-tag">{{ skill }}</span>
+            {% endfor %}
+        </div>
+        
+        <h2>💼 Recommended Jobs ({{ jobs|length }})</h2>
+        
+        {% if jobs %}
+            {% for job in jobs %}
+            <div class="job-card">
+                <span class="match-score">Match: {{ job.match_score or 1 }}/3</span>
+                <div class="job-title">{{ job.title }}</div>
+                <div class="company">🏢 {{ job.company }} | 📍 {{ job.location }}</div>
+                <p><strong>Skills:</strong> {{ job.skills_required|join(', ') }}</p>
+                <a href="{{ job.url }}" target="_blank" class="apply-btn">Apply Now →</a>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No matching jobs found. Try updating your skills or check back later.</p>
+        {% endif %}
+        
+        <div style="margin-top: 30px; text-align: center;">
+            <a href="/" style="color: #2196F3; text-decoration: none;">← Create Another Resume</a>
+        </div>
+    </div>
+</body>
+</html>
