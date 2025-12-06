@@ -20,4 +20,4 @@ Integrated with job search APIs to match skills with open positions.
 
 ##  Documentation
 [View Project Report (PDF)](https://drive.google.com/file/d/1y7zejZPLGjxthoUtol_zNPR7sL5kiCIH/view?usp=sharing)
-Core logic assisted by AI tools; adapted and implemented by Rohith Talari.
+Core application logic architected, customized, and fully implemented by Rohith Talari
